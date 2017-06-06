@@ -146,9 +146,12 @@ class BookItem extends dessert.DisplayObjectContainer {
         change_Bitmap.imageResource = dessert.res.get(bianjiButton_res);
         this.deleteButton = delete_Bitmap;
         this.changeButton = change_Bitmap;
-        this.addChild(this.bookTextField);
-        this.addChild(this.deleteButton);
-        this.addChild(this.changeButton);
+        let container = new dessert.DisplayObjectContainer();
+
+        container.addChild(this.bookTextField);
+        container.addChild(this.deleteButton);
+        container.addChild(this.changeButton);
+        this.addChild(container);
 
 
         this.deleteButton.touchEnabled = true;
@@ -163,7 +166,7 @@ class BookItem extends dessert.DisplayObjectContainer {
                     break;
                 }
             }
-            this.removeChild(this);
+            this.removeChild(container);
             booksResource = copy_booksResource;
         });
 
